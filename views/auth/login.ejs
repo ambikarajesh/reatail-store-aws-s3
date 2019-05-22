@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/head.ejs') %>
+    <body>
+        <%- include('../partials/main-nav.ejs') %>
+        <main>
+            <form action='/auth/login' method='POST' class='form-data' novalidate>  
+                <h4>Login</h4>  
+                <div class='error-msg'>
+                    <p><%= errorMessage %></p>
+                </div>
+                <div class='success-msg'>
+                    <p><%= successMessage %></p>
+                </div>           
+                <div class = 'form-controls'>
+                    <label for='email'>Email: </label>
+                    <input 
+                        class = '<%= validateInput.find(error => error.param === "email") ? "invalid" : "" %>'
+                        type='email' 
+                        name='email' 
+                        value= '<%= oldInput.email %>'/>
+                    <label for='password'>Password: </label>
+                    <input 
+                        class = '<%= validateInput.find(error => error.param === "password") ? "invalid" : "" %>'
+                        type='password' 
+                        name='password' 
+                        value= '<%= oldInput.password %>'/> 
+                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>                
+                </div>
+                <button type='submit' id='login-button'>Login</button>
+                <div style = 'padding:10px 0'>
+                    <a href = '/auth/reset'>Reset Password</a>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

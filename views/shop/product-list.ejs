@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+   <%- include('../partials/head.ejs') %>
+    <body>
+        <%- include('../partials/main-nav.ejs') %>
+        <main class ='main-content'>
+            <h3>Milk Sweets</h3>
+           
+            <nav class='main-content_nav'>
+                <p onclick ="rightArrow()"><i class=" right"></i></p>  
+                 <div class = 'main-content_wrapper'>             
+                    <% if(products.length>0){ %>                        
+                            <ul class = 'main-content_item-list'>
+                                <% products.forEach(product=>{ %>
+                                    <a href = '/products/<%= product._id %>'>
+                                        <li class = 'main-content_item'>
+                                            <div>
+                                                <div class='item_image'><img src="<%= product.image  %>" alt = "<%= product.name %>" width ='200px' height = '200px' /></div>
+                                                <div class='item_name'><%= product.name%></div>
+                                                <div class='item_price'> $ <%= product.price%> / per lb</div>
+                                                <div class='item_button'>
+                                                    <% if(isAuthorized) { %>
+                                                        <form action = '/cart' method = 'POST'>
+                                                            <input type = 'hidden' value = '<%= product._id %>' name = 'productId'>
+                                                            <input type = 'hidden' value = '<%= product.price %>' name = 'price'>
+                                                            <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                            <button id = 'add-to-cart'>Add to Cart</button>
+                                                        </form>  
+                                                    <% } %>                                                  
+                                                </div>                                                
+                                            </div>                                        
+                                        </li>
+                                    </a>
+                                <% }) %>
+                            </ul>
+                        
+                    <% }else{%>
+                        <h4>No items found</h4>
+                    <% } %>
+                </div>
+                <p onclick ="leftArrow()"><i class="left"></i></p>
+            </nav>            
+        </main>
+        <script src="/js/home.js"></script>
+    </body>
+</html>

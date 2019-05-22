@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+   <%- include('../partials/head.ejs') %>
+   <body>
+        <%- include('../partials/main-nav.ejs') %>        
+        <main>
+                <h3>Shopping Cart <span class ='cart_no-of-items'>(<%= items.length %> items)</span></h3>
+                <div class = 'cart_main-content'>
+                    <div class='cart_main-content_nav'>
+                        <% if(items.length>0){%>
+                            <ul class='cart_main-content_itemlist'>
+                                <% items.forEach (item =>{ %>
+                                    <li class='cart_main-content_item'>
+                                        <a  href = '/products/<%= item.productId._id %>' class='cart_item-image'>                                    
+                                            <img src = '<%= item.productId.image %>' width ='200px' height = '200px'/>
+                                        </a>
+                                        <div  class='cart_item-name'>
+                                            <h4><%= item.productId.name %></h4>                                        
+                                        </div>
+                                        <div  class='cart_item-price'>
+                                            <div>
+                                                <h4> $ <%= item.productId.price%> / per lb</h4>
+                                            </div>                                        
+                                            <div class = 'inc-dec'>
+                                                <form action='/decrease-cart-item' method='POST'>
+                                                    <input type='hidden' value='<%= item.productId._id %>' name='productId'/>
+                                                    <input type='hidden' value='<%= item.productId.price %>' name='price'/>
+                                                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                    <button id = 'decrease-button'>-</button>
+                                                </form>
+                                                <span style='font-size:13px;'><%= item.quantity %> lb</span>
+                                                <form action='/increase-cart-item' method='POST'>
+                                                    <input type='hidden' value='<%= item.productId._id %>' name='productId'/>
+                                                    <input type='hidden' value='<%= item.productId.price %>' name='price'/>
+                                                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                    <button id = 'increase-button'>+</button>
+                                                </form>
+                                            </div>
+                                            <div class="cart_button"> 
+                                                <form action='/save-for-later-item' method='POST'>
+                                                    <input type='hidden' value='<%= item.productId._id %>' name='productId'/>
+                                                    <input type='hidden' value='<%= item.productId.price %>' name='price'/>
+                                                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                    <button id = 'save-for-later-button'>Save for Later</button>
+                                                </form>      
+                                                <form action='/delete-cart-item' method='POST'>
+                                                    <input type='hidden' value='<%= item.productId._id %>' name='productId'/>
+                                                    <input type='hidden' value='<%= item.productId.price %>' name='price'/>
+                                                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                    <button id = 'remove-button'>X remove</button>
+                                                </form>                                            
+                                            </div>                                    
+                                        </div>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        <% } else { %>
+                            <p>no item in the cart...</p>
+                        <% } %>
+                        <div>                        
+                            <% if(products.length>0){%>
+                                <h3>Save for Later</h3>
+                                <ul class='cart_main-content_itemlist'>
+                                    <% products.forEach (product =>{ %>
+                                        <li class='cart_main-content_item'>
+                                            <a  href = '/products/<%= product.productId._id %>' class='cart_item-image'>                                    
+                                                <img src = '<%= product.productId.image %>' width ='200px' height = '200px'/>
+                                            </a>
+                                            <div  class='cart_item-name'>
+                                                <h4><%= product.productId.name %></h4>                                        
+                                            </div>
+                                            <div  class='cart_item-price'>
+                                                <div>
+                                                    <h4> $ <%= product.productId.price%> / per lb</h4>
+                                                </div>                                        
+                                                
+                                                <div class="cart_button"> 
+                                                    <form action='/move-to-cart-item' method='POST'>
+                                                        <input type='hidden' value='<%= product.productId._id %>' name='productId'/>
+                                                        <input type='hidden' value='<%= product.productId.price %>' name='price'/>
+                                                        <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                        <button id = 'move-to-cart-button'>Move to cart</button>
+                                                    </form>      
+                                                    <form action='/delete-save-for-later-item' method='POST'>
+                                                        <input type='hidden' value='<%= product.productId._id %>' name='productId'/>
+                                                        <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                                        <button id = 'remove-button'>X remove</button>
+                                                    </form>                                            
+                                                </div>                                    
+                                            </div>
+                                        </li>
+                                    <% }) %>
+                                </ul>
+                            <% } %>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class = 'order-summary'>
+                        <div>
+                            <h3>Order Summary</h3>
+                            <p>
+                                <span><%= items.length %> Item Subtotal</span> 
+                                <strong><%= subTotal %> USD</strong>  
+                            </p>
+                            <p>
+                                <span>Shipping</span>  
+                                <strong>FREE</strong>
+                            </p>
+                            <p>
+                                    <span>Total</span> 
+                                    <strong><%= subTotal %> USD</strong>  
+                            </p>
+                            <% if(items.length !== 0) { %>
+                                <form action='/checkout' method='POST'>
+                                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                                    <button id='proceed-to-checkout'>Proceed to Checkout*</button>
+                                </form>
+                                
+                            <% } %>
+                            <h6 style = 'padding-top:20px'>* Prices may vary depending on the final shipping destination.</h6>
+                        </div>
+                        
+                    </div>
+                </div>
+           
+        </main> 
+        
+    </body>
+</html>

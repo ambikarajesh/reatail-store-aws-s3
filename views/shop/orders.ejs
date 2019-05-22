@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <%- include('../partials/head.ejs') %>
+   <body>
+        <%- include('../partials/main-nav.ejs') %>
+        <main class='order_main-content'>    
+            <h3>Orders</h3>                    
+            <% if(orders.length>0){%>               
+                <ul class='order_list'>
+                    <% orders.forEach (order =>{ %>
+                        <div class='orders'>
+                            <div class='orders-content'>
+                                <h4>Order: #<%= order._id %> - <a href='orders/<%= order._id %>'>Invoice</a></h4>
+                                <p> Order On:<%= order.ordered %></p>
+                                <li class='order'>
+                                    <ul class ='order_items'> 
+                                    <% order.items.forEach (item =>{ %>
+                                        <li class='order_item'>
+                                            <div class = 'order_item-image'>
+                                                <img src = '<%= item.productId.image %>' width ='200px' height = '200px'/>      
+                                            </div>                             
+                                            <div  class='order_item-content'>
+                                                <p>Name:        <strong><%= item.productId.name %></strong></p>  
+                                                <p>Price:       <strong>$ <%= item.productId.price %> / per lb </strong></p> 
+                                                <p>Quantity:    <strong><%= item.quantity %> lb</strong></p>
+                                                <p>Sell by:     <strong><%= item.productId.userId.email%></strong></p>                                     
+                                            </div>                                   
+                                        </li>
+                                    
+                                    <% }) %>
+                                    <ul>
+                                </li>
+                            </div>
+                            <div class='order-total'>
+                                    <h4>Total: $<strong><%= order.total%></strong></h4>
+                            </div>
+                        </div>
+                    <% }) %>
+                </ul>
+            <% } else{ %>
+                <p>No items still ordered...</p>
+                <% } %>
+            </main>     
+    </body>
+</html>

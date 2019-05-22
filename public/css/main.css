@@ -1,0 +1,259 @@
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Laila', serif;
+}
+
+main {
+    padding: 1rem;
+}
+
+.main-header {
+    width: 100%;
+    height: 3.5rem;
+    background-color: #478307;
+    padding: 0 1.5rem;
+}
+
+.main-header_nav {
+    height: 100%;
+    display: flex;
+    align-items: center;    
+    justify-content: space-between;
+}
+
+.main-header_item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-header_item {
+    margin: 0 1rem;
+    padding: 0;
+}
+
+.main-header_item a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.main-header_item a:hover,
+.main-header_item a:active,
+.main-header_item a.active {
+    border-bottom:2px solid #fff;
+    color:#000;
+}
+
+.main-content{
+    margin:0 auto;
+    width:100%;
+}
+.main-content_nav{    
+    width:100%;
+    padding:20px;
+    position: relative;    
+      
+}
+.main-content_wrapper{
+    display: flex;
+    width:100%;
+    overflow: hidden;
+}
+.main-content_item-list{    
+    display: flex;
+    position: relative;
+    -webkit-transition: width 5s ease; /* For Safari 3.1 to 6.0 */
+    transition: width 5s ease;
+    
+}
+.main-content_item-list a{
+    text-decoration: none;
+}
+.main-content_item{    
+    width: 250px; 
+    list-style: none;    
+    box-sizing: border-box;
+  }
+  .main-content_item>div{
+    margin:10px;
+    border-radius: 5px 5px;
+    align-items: center;
+    background-color: #666;
+    color:#fff;
+    cursor: pointer;    
+    text-align: center;
+    padding:5px;
+  }
+  
+.item_image {
+   width: 100%;
+   height: 200px;
+   border:2px solid #666;
+   border-radius: 5px 5px;
+}
+
+.item_image img {
+    width: 100%;
+    display: block;   
+}
+
+.item_name{
+    font-size: 15px;
+    padding:10px 0;
+    font-weight: bold;
+}
+
+.item_price{
+    font-size: 14px;
+}
+.item_button{
+    margin:10px;
+    display:flex;
+    justify-content: space-around;
+}
+
+#add-to-cart, #logout-button, #edit, #delete{
+    font-size: 12px;
+    padding:10px 20px;
+    background-color: #478307;
+    color:#fff;
+    border:2px solid #fff;
+    border-radius: 5px 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+}
+#logout-button{
+    padding:5px 20px;
+}
+#add-to-cart:hover, #edit:hover, #delete:hover, #logout-button:hover{
+    color:#000;
+    border:2px solid #000;
+}
+#edit, #delete{
+    width:75px;
+
+}
+#edit{
+    padding:8px 20px;
+}
+
+i {
+    border: solid#aaa;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    width:25px;
+    height:25px;
+  }
+  i:hover{
+    border: solid #000;
+    border-width: 0 5px 5px 0;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    position:absolute;
+    top:50%;
+    right:0;
+    cursor: pointer;
+  }
+  
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    position:absolute;
+    top:50%;
+    left:0;
+    cursor: pointer;
+  }
+
+  
+
+
+  /* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* STYLES GO HERE */
+}
+ 
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (min-width : 321px) {
+/* STYLES GO HERE */
+}
+ 
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+/* STYLES GO HERE */
+}
+ 
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+/* STYLES GO HERE */
+}
+ 
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+/* STYLES GO HERE */
+}
+ 
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+/* STYLES GO HERE */
+}
+ 
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+/* STYLES GO HERE */
+}
+ 
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+/* STYLES GO HERE */
+}
+ 
+/* iPhone 5 (portrait &amp; landscape)----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+/* STYLES GO HERE */
+}
+ 
+/* iPhone 5 (landscape)----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : landscape) {
+/* STYLES GO HERE */
+}
+ 
+/* iPhone 5 (portrait)----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait) {
+    .main-content_wrapper{
+        width:250px;
+    }
+}

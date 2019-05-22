@@ -1,0 +1,139 @@
+.order_main-content{
+    width:100%;
+}
+.order_list{
+    list-style: none;    
+    width:100%;
+    margin:20px auto;
+}
+.order{
+    list-style: none;
+    
+}
+.order_item{
+    width:100%;
+    height:150px;
+    border:1px solid #ccc;
+    color:#666;
+    display:flex;
+    padding:10px;
+    box-sizing: border-box;
+    margin:10px;
+}
+.order_item-image {
+    width:25%;
+}
+.order_item-content{
+    width:75%;
+    padding:0 20px;
+}
+.order_item > div > img{
+    width:100%;
+    height:100%;
+}
+p{
+    font-size: 14px;
+}
+.orders{
+    width:60%;
+    border:2px solid #ccc;
+    display: flex;
+    margin:20px 0;
+}
+.orders-content{
+    width:85%;
+}
+.order-total{
+    width:15%;
+    margin:0 auto;
+    padding:0 20px;
+}
+
+
+
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+  /* STYLES GO HERE */
+  .cart_button{
+    display: block;
+}
+  }
+   
+  /* Smartphones (landscape) ----------- */
+  @media only screen
+  and (min-width : 321px) {
+  /* STYLES GO HERE */
+  
+  }
+   
+  /* Smartphones (portrait) ----------- */
+  @media only screen
+  and (max-width : 320px) {
+  /* STYLES GO HERE */
+  }
+   
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px) {
+  /* STYLES GO HERE */
+  
+  }
+   
+  /* iPads (landscape) ----------- */
+  @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation : landscape) {
+  /* STYLES GO HERE */
+  }
+   
+  /* iPads (portrait) ----------- */
+  @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation : portrait) {
+  /* STYLES GO HERE */
+  }
+   
+  /* Desktops and laptops ----------- */
+  @media only screen
+  and (min-width : 1224px) {
+  /* STYLES GO HERE */
+  }
+   
+  /* Large screens ----------- */
+  @media only screen
+  and (min-width : 1824px) {
+  /* STYLES GO HERE */
+  }
+   
+  /* iPhone 5 (portrait &amp; landscape)----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px) {
+  /* STYLES GO HERE */
+  }
+   
+  /* iPhone 5 (landscape)----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px)
+  and (orientation : landscape) {
+  /* STYLES GO HERE */
+  }
+   
+  /* iPhone 5 (portrait)----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px)
+  and (orientation : portrait) {
+      .order_list{
+          width:100%;
+      }
+    .orders{
+        width:100%;
+    }
+  }

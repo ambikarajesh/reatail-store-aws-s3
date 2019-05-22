@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/head.ejs') %>
+    <body>
+        <%- include('../partials/main-nav.ejs') %>
+        <main>
+            <form action='/auth/signup' method='POST' class='form-data' novalidate>  
+                <h4>Signup</h4>  
+                <div class='error-msg'>
+                    <p><%= errorMessage %></p>
+                </div>            
+                <div class = 'form-controls'>
+                    <label for='email'>Email: </label>
+                    <input 
+                        class = '<%= validateInput.find(error => error.param === "email") ? "invalid" : "" %>'
+                        type='email' 
+                        name='email' 
+                        value= '<%= oldInput.email %>'/>
+                    <label for='password'>Password: </label>
+                    <input 
+                        class = '<%= validateInput.find(error => error.param === "password") ? "invalid" : "" %>'
+                        type='password' 
+                        name='password' 
+                        value= '<%= oldInput.password %>'/>  
+                    <label for='password'>Conform Password: </label>
+                    <input 
+                        class = '<%= validateInput.find(error => error.param === "confirmPassword") ? "invalid" : "" %>'
+                        type='password' 
+                        name='confirmPassword' 
+                        value= '<%= oldInput.confirmPassword %>'/> 
+                    <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>                   
+                </div>
+                <button type='submit' id='signup-button'>SignUp</button>
+            </form>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <%- include('../partials/head.ejs') %>
+   <body>
+        <%- include('../partials/main-nav.ejs') %>
+        <div style="width:35%;margin:50px auto;background-color: #666; color:#fff; padding:20px;">
+            <% if(items.length>0){%>
+                    <ul class='cart_main-content_itemlist'>
+                        <% items.forEach (item =>{ %>
+                            <li class='cart_main-content_item'>
+                                <div class='cart_item-image'>                                    
+                                    <img src = '<%= item.productId.image %>' width ='200px' height = '200px'/>
+                                </div>
+                                <div  class='cart_item-name'>
+                                    <h5><%= item.productId.name %> </h5>  
+                                    <h5><%= item.quantity %> lb </h5> 
+                                    <h5>$ <%= item.productId.price%> / lb</h5>                                     
+                                </div>                                
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>            
+            <div>
+                <h2 style='text-align:center;color:red;'>Total: $<%= subTotal %> <span style='font-size: 15px'>USD</span></h2>
+            </div>
+            <div style='text-align: center;'>
+                <form action="/order-now" method="POST">
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="pk_test_cWsr3ctYKXKNPohJL6yJmIO900NhSGyc0h"
+                      data-amount="<%= subTotal * 100 %>"
+                      data-name="Ambika"
+                      data-description="Example charge"
+                      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                      data-locale="USD">
+                    </script>
+                     <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>
+                  </form>
+            </div>
+        </div>
+    </body>
+</html>

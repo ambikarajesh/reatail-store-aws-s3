@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/head.ejs') %>
+    <body>
+        <%- include('../partials/main-nav.ejs') %>
+        <main>
+            <form action='/admin/<% if(edit){ %>edit-product<% }else{ %>add-product<% } %>?_csrf=<%= csrfToken %>' method='POST' class='form-data' enctype="multipart/form-data">  
+                <h4><% if(edit){ %>Edit Product<% }else{ %>Add Product<% } %></h4>  
+                <div class='error-msg'>
+                    <p><%= errorMessage %></p>
+                </div>           
+                <div class = 'form-controls'>
+                    <label for='name'>Name: </label>
+                    <input 
+                            class = '<%= validateInput.find(error => error.param === "name") ? "invalid" : "" %>'
+                            type='text' 
+                            name='name' 
+                            value= '<% if(edit || hasError) { %> <%=product.name %> <% } %>'/>
+                    <label for='image'>Image: </label>
+                    <input 
+                            type='file' 
+                            name='image' />
+                    
+                    <label for='price'>Price: </label>
+                    <input 
+                            class = '<%= validateInput.find(error => error.param === "price") ? "invalid" : "" %>'
+                            type='text' 
+                            name='price' 
+                            value= '<% if(edit || hasError) { %> <%=product.price %> <% } %>'/>
+                    <label for='Ingredients'>Ingredients: </label>
+                    <input 
+                            class = '<%= validateInput.find(error => error.param === "ingredients") ? "invalid" : "" %>'
+                            type='text' 
+                            name='ingredients' 
+                            value= '<% if(edit || hasError) { %><%=product.ingredients %> <% } %>'/>
+                    <% if(edit) { %>
+                        <input type='hidden' name='id' value = '<%= product._id %>'>
+                    <% } %> 
+                    <!-- <input type='hidden' name='_csrf' value = '<%= csrfToken %>'>  
+                    <%= csrfToken %> -->
+                </div>
+                <button type='submit' id='product-button'><% if (edit) { %> Update Product <% }else { %> Add Product <% } %></button>
+            </form>
+        </main>
+    </body>
+</html>

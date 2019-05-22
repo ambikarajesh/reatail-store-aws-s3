@@ -1,0 +1,57 @@
+.form-data{
+    border:1px solid #ccc;
+    width:40%;
+    margin:100px auto;
+    padding:20px;  
+    text-align: center;  
+}
+.form-controls{
+    width:100%;
+    padding:20px;
+    text-align: left;
+}
+.form-controls > label , .form-controls > input{
+        width:100%;
+        padding:5px;
+        margin:5px 0;
+        font-family: inherit;
+}
+
+#product-button, #login-button, #signup-button{
+    font-size: 12px;
+    padding:10px 20px;
+    background-color: #478307;
+    color:#fff;
+    border:2px solid #fff;
+    border-radius: 5px 5px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+}
+#product-button:hover, #login-button:hover,#signup-button:hover{
+    color:#000;
+    border:2px solid #000;
+}
+.error-msg{
+    padding:10px 0;
+    color:red;
+}
+.success-msg{
+    padding:10px 0;
+    color:green;
+}
+.reset-pwd-nodify{
+    padding:20px;
+}
+.invalid{
+    border:1px solid red;
+}
+/* iPhone 5 (portrait)----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait) {
+    .form-data{
+        width:250px;
+    }
+}
